@@ -1,6 +1,6 @@
-# RoboSub Prototype Repository
+# RoboSub v1 Repository
 
-This repository currently contains the base plans for RoboSub, an AUV competition held every July. No code in here yet; see docs/software-architecture.md for useful info.
+This repository currently contains my humble plans for RoboSub, an AUV competition held every July. No code in here yet; see docs/software-architecture.md for useful info. GitHub Issues tracklist coming soon
 
 ## Overview
 
