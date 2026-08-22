@@ -10,10 +10,9 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-
 ## Phase 0: ROV Foundation (Weeks 1-8)
 
-### 0.0 Essential Design Documents (Weeks 1-2)
+### 0.0 Essential Design Documents (Weeks 1-2) **[FOCUS: Planning / Systems]**
 
 **Goal:** Create minimum viable design documents to guide development.
 
@@ -28,43 +27,14 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.4 Wiring & Power Diagram (Weeks 3-4)
+### 0.1 Requirements & Task Analysis **[FOCUS: Planning / Systems]**
 
-**Goal:** Document all physical connections before assembly.
-
-- [ ] **WIR-01** Create wiring diagram: all UART, I2C, USB, PWM, power connections
-- [ ] **WIR-02** Create power distribution diagram: battery → regulators → components
-- [ ] **WIR-03** Document pinout assignments for Raspberry Pi, Cube Orange, PCB
-
-**Acceptance Criteria:**
-- [ ] Wiring diagram is complete and matches the physical build
-- [ ] Power budget is validated (total draw < battery capacity)
-- [ ] Pinout assignments are documented and version-controlled
-
----
-
-### 0.6 Test Plan (Weeks 5-6)
-
-**Goal:** Define testing strategy before pool deployment.
-
-- [ ] **TEST-01** Define test progression: bench → simulation → pool → competition
-- [ ] **TEST-02** Define success criteria for each test phase
-- [ ] **TEST-03** Document data collection requirements for each test
-
-**Acceptance Criteria:**
-- [ ] Test progression is documented and team has reviewed it
-- [ ] Success criteria are quantified (e.g., depth error < 0.3m)
-- [ ] Data collection plan is documented
-
----
-
-### 0.1 Requirements & Task Analysis
 **Goal:** Document what the vehicle must do and how components will communicate.
 
 - [ ] **RT-01** Document competition tasks (gate, buoys, torpedoes, etc.) with success criteria and point values
 - [ ] **RT-02** Define vehicle operational envelope: max depth (5m), max speed (1.5 m/s), mission duration (15 min)
 - [ ] **RT-03** Create interface control document (ICD) between all compute nodes: UART baud rates, ROS 2 topics, MAVLink message types
-- [ ] **RT-04** Document failure modes and recovery actions for each system state 
+- [ ] **RT-04** Document failure modes and recovery actions for each system state (see ESS ENN Guide - Fault Detection)
 - [ ] **RT-05** **[DEFER]** Autonomy-specific requirements (waypoint accuracy, object detection thresholds) → defer until Phase 1
 - [ ] **RT-06** **[DEFER]** Detailed behavior tree design → defer until Phase 1, use simple state machine for ROV
 
@@ -76,7 +46,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.2 Repository Setup
+### 0.2 Repository Setup **[FOCUS: DevOps]**
+
 **Goal:** Establish version control and basic project structure.
 
 - [ ] **REPO-01** Create monorepo with three subdirectories: `firmware/` (Cube Orange), `companion/` (Raspberry Pi), `autonomy/` (Jetson)
@@ -94,7 +65,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.3 Development Environment
+### 0.3 Development Environment **[FOCUS: DevOps / Autonomy]**
+
 **Goal:** Set up native development environments on all platforms.
 
 - [ ] **ENV-01** Set up ROS 2 Jazzy on Jetson Orin Nano (Ubuntu 24.04) with `ros-base` installation
@@ -110,7 +82,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.4 Simulation Environment
+### 0.4 Simulation Environment **[FOCUS: Autonomy / DevOps]**
+
 **Goal:** Validate software stack in a virtual environment before hardware deployment.
 
 - [ ] **SIM-01** Install and configure Blue Robotics `ardusub-gazebo` simulator with vehicle model
@@ -127,7 +100,38 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.5 Hardware Abstraction Layer (Cube Orange)
+### 0.5 Wiring & Power Diagram (Weeks 3-4) **[FOCUS: Hardware]**
+
+**Goal:** Document all physical connections before assembly.
+
+- [ ] **WIR-01** Create wiring diagram: all UART, I2C, USB, PWM, power connections
+- [ ] **WIR-02** Create power distribution diagram: battery → regulators → components
+- [ ] **WIR-03** Document pinout assignments for Raspberry Pi, Cube Orange, PCB
+
+**Acceptance Criteria:**
+- [ ] Wiring diagram is complete and matches the physical build
+- [ ] Power budget is validated (total draw < battery capacity)
+- [ ] Pinout assignments are documented and version-controlled
+
+---
+
+### 0.6 Test Plan (Weeks 5-6) **[FOCUS: Planning / Systems]**
+
+**Goal:** Define testing strategy before pool deployment.
+
+- [ ] **TEST-01** Define test progression: bench → simulation → pool → competition
+- [ ] **TEST-02** Define success criteria for each test phase
+- [ ] **TEST-03** Document data collection requirements for each test
+
+**Acceptance Criteria:**
+- [ ] Test progression is documented and team has reviewed it
+- [ ] Success criteria are quantified (e.g., depth error < 0.3m)
+- [ ] Data collection plan is documented
+
+---
+
+### 0.7 Hardware Abstraction Layer (Cube Orange) **[FOCUS: Control / Hardware]**
+
 **Goal:** Configure the flight controller firmware and validate actuator/sensor integration.
 
 - [ ] **HAL-01** Flash ArduSub 4.5+ firmware to Cube Orange with default Blue Robotics parameters
@@ -151,7 +155,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.6 Control Layer (Raspberry Pi - ROV Mode)
+### 0.8 Control Layer (Raspberry Pi - ROV Mode) **[FOCUS: Control / DevOps]**
+
 **Goal:** Set up the companion computer for MAVLink routing, I/O, and manual control.
 
 - [ ] **CTRL-01** Install BlueOS on Raspberry Pi 4 with minimal extensions (MAVLink Router, Web UI)
@@ -171,7 +176,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.7 Operator Interface (ROV Dashboard)
+### 0.9 Operator Interface (ROV Dashboard) **[FOCUS: DevOps / Autonomy]**
+
 **Goal:** Provide the pilot with real-time telemetry and video feedback.
 
 - [ ] **UI-01** Set up QGroundControl or BlueOS web interface on surface laptop
@@ -187,7 +193,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.8 Hardware Bring-Up (Physical Vehicle)
+### 0.10 Hardware Bring-Up (Physical Vehicle) **[FOCUS: Hardware]**
+
 **Goal:** Assemble and validate the physical vehicle structure, waterproofing, and power distribution.
 
 - [ ] **HW-01** Assemble pressure vessel: acrylic dome, O-rings, penetrators, bulkheads
@@ -209,7 +216,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.9 ROV Integration & Sea Trials (Without Jetson)
+### 0.11 ROV Integration & Sea Trials (Without Jetson) **[FOCUS: Control / Hardware]**
+
 **Goal:** Validate manual control with Raspberry Pi + Cube Orange only.
 
 - [ ] **INT-01** Connect all layers: joystick → Raspberry Pi → Cube Orange → thrusters
@@ -223,7 +231,8 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
-### 0.10 Jetson Integration (Insert After INT-02)
+### 0.12 Jetson Integration **[FOCUS: Perception / DevOps]**
+
 **Goal:** Add the Jetson in a passive role for data logging and fail-safe validation.
 
 - [ ] **JET-01** Install ROS 2 Jazzy on Jetson with MAVROS and DepthAI drivers
@@ -240,25 +249,9 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 - [ ] OAK-D and ArduCam streams are visible in `rviz2` or `rqt_image_view` with < 5% dropped frames
 - [ ] Fail-safe triggers surface command within 3s of Jetson heartbeat loss on bench
 - [ ] Jetson temperature remains < 65°C during 30-minute bench test (with cooling fan)
-
----
-
-### 0.11 ROV Integration & Sea Trials (With Jetson)
-**Goal:** Validate manual control with Jetson integrated (passive mode).
-
-- [ ] **INT-03** Repeat INT-02 with Jetson powered on → verify no change in manual control behavior
-- [ ] **INT-04** Test fail-safe: disconnect Jetson (or simulate crash) → vehicle surfaces
-- [ ] **INT-05** Leak test: submerge vehicle to 3m for 30 minutes, monitor leak sensors (with Jetson logging)
-- [ ] **INT-06** Endurance test: 20-minute continuous manual operation with Jetson logging data
-- [ ] **INT-07** Add telemetry dashboard (BlueOS web interface) with Jetson data integration
-
-**Acceptance Criteria (Final Phase 0 Validation):**
-- [ ] Manual control behavior is identical with and without Jetson powered on
-- [ ] Fail-safe surfaces vehicle within 5s of Jetson heartbeat loss (pool test, not just bench)
-- [ ] Leak sensors detect water ingress within 5s of simulated leak
-- [ ] Vehicle operates continuously for 20 minutes with no thermal shutdowns or voltage drops
-- [ ] Jetson logs complete dataset: IMU, depth, thruster telemetry, camera streams for entire run
-- [ ] Dashboard displays all telemetry with < 1s latency
+- [ ] Power consumption measured and documented (idle, streaming, and logging states)
+- [ ] All ROS 2 topics are published at expected rates (verified with `ros2 topic hz`)
+- [ ] System logs show no errors or warnings during 30-minute continuous operation
 
 ---
 
