@@ -13,7 +13,67 @@
 
 ---
 
+
 ## Phase 0: ROV Foundation (Weeks 1-8)
+
+### 0.0 Essential Design Documents (Weeks 1-2)
+
+**Goal:** Create minimum viable design documents to guide development.
+
+- [ ] **DOC-01** Create System Architecture Document: block diagram, hardware-software mapping, communication protocols, power budget
+- [ ] **DOC-02** Create Project Management Document: team roles, meeting cadence, decision-making process
+- [ ] **DOC-03** Create Safety & Risk Document: emergency procedures, kill switch, battery safety
+
+**Acceptance Criteria:**
+- [ ] System Architecture diagram is complete and team has reviewed it
+- [ ] Team roles and meeting schedule are documented
+- [ ] Safety procedures are documented and understood by all team members
+
+---
+
+### 0.4 Wiring & Power Diagram (Weeks 3-4)
+
+**Goal:** Document all physical connections before assembly.
+
+- [ ] **WIR-01** Create wiring diagram: all UART, I2C, USB, PWM, power connections
+- [ ] **WIR-02** Create power distribution diagram: battery → regulators → components
+- [ ] **WIR-03** Document pinout assignments for Raspberry Pi, Cube Orange, PCB
+
+**Acceptance Criteria:**
+- [ ] Wiring diagram is complete and matches the physical build
+- [ ] Power budget is validated (total draw < battery capacity)
+- [ ] Pinout assignments are documented and version-controlled
+
+---
+
+### 0.6 Test Plan (Weeks 5-6)
+
+**Goal:** Define testing strategy before pool deployment.
+
+- [ ] **TEST-01** Define test progression: bench → simulation → pool → competition
+- [ ] **TEST-02** Define success criteria for each test phase
+- [ ] **TEST-03** Document data collection requirements for each test
+
+**Acceptance Criteria:**
+- [ ] Test progression is documented and team has reviewed it
+- [ ] Success criteria are quantified (e.g., depth error < 0.3m)
+- [ ] Data collection plan is documented
+
+---
+
+### 1.0 Pre-Phase 1 Planning (Week 8-9)
+
+**Goal:** Create design documents for autonomy and perception before implementation.
+
+- [ ] **PLAN-01** Create State Machine Design Document: states, transitions, failure modes
+- [ ] **PLAN-02** Create CV Pipeline Design Document: VO, quality monitor, sensor fusion
+- [ ] **PLAN-03** Create Autonomy Design Document: path planning, motion control, dead reckoning
+
+**Acceptance Criteria:**
+- [ ] State machine diagram is complete and reviewed
+- [ ] CV pipeline design is documented and reviewed
+- [ ] Autonomy design is consistent with state machine and CV pipeline
+- [ ] Team can begin Phase 1 implementation with clear direction
 
 ### 0.1 Requirements & Task Analysis
 **Goal:** Document what the vehicle must do and how components will communicate.
@@ -259,6 +319,16 @@
 - [ ] CI/CD pipeline passes on pull requests (build + lint)
 - [ ] Documentation auto-generates and is hosted (e.g., GitHub Pages)
 - [ ] All team members can use the same Docker environment for development
+
+---
+
+
+**Acceptance Criteria:**
+- [ ] State diagram is complete and reviewed
+- [ ] All transitions have clear conditions (thresholds, events)
+- [ ] ROS 2 interface definitions are in version control
+- [ ] Team has approved the design
+- [ ] Simulation test cases cover all states and transitions
 
 ---
 
