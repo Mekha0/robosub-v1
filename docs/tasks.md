@@ -6,10 +6,7 @@
 
 **Phase 1: AUV Second** → Layer autonomy on top of proven hardware. Autonomy is useless if the vehicle can't hold depth or respond to joystick commands.
 
-**Key Updates:**
-- Added **acceptance criteria** after each task group and at each phase milestone
-- Integrated Jetson immediately after `INT-02` for passive data collection
-- Added explicit Phase 0 Jetson integration tasks
+This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by February 2027, but realistically, we'll be finished by like May.
 
 ---
 
@@ -60,20 +57,6 @@
 - [ ] Data collection plan is documented
 
 ---
-
-### 1.0 Pre-Phase 1 Planning (Week 8-9)
-
-**Goal:** Create design documents for autonomy and perception before implementation.
-
-- [ ] **PLAN-01** Create State Machine Design Document: states, transitions, failure modes
-- [ ] **PLAN-02** Create CV Pipeline Design Document: VO, quality monitor, sensor fusion
-- [ ] **PLAN-03** Create Autonomy Design Document: path planning, motion control, dead reckoning
-
-**Acceptance Criteria:**
-- [ ] State machine diagram is complete and reviewed
-- [ ] CV pipeline design is documented and reviewed
-- [ ] Autonomy design is consistent with state machine and CV pipeline
-- [ ] Team can begin Phase 1 implementation with clear direction
 
 ### 0.1 Requirements & Task Analysis
 **Goal:** Document what the vehicle must do and how components will communicate.
@@ -301,7 +284,23 @@
 
 ---
 
-## Phase 1: AUV Development (Weeks 9-20)
+## Phase 1: AUV Development (Weeks 8-20)
+
+### 1.0 Pre-Phase 1 Planning (Week 8-9)
+
+**Goal:** Create design documents for autonomy and perception before implementation.
+
+- [ ] **PLAN-01** Create State Machine Design Document: states, transitions, failure modes
+- [ ] **PLAN-02** Create CV Pipeline Design Document: VO, quality monitor, sensor fusion
+- [ ] **PLAN-03** Create Autonomy Design Document: path planning, motion control, dead reckoning
+
+**Acceptance Criteria:**
+- [ ] State machine diagram is complete and reviewed
+- [ ] CV pipeline design is documented and reviewed
+- [ ] Autonomy design is consistent with state machine and CV pipeline
+- [ ] Team can begin Phase 1 implementation with clear direction
+
+---
 
 ### 1.1 Development Environment (Phase 1 Additions)
 **Goal:** Add containerization and CI/CD for reproducible builds.
