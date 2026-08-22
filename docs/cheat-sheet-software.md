@@ -326,9 +326,9 @@ end
 
 ## References
 
-- [ArduSub Documentation](https://www.ardusub.com/)
-- [ROS 2 Jazzy Documentation](https://docs.ros.org/en/jazzy/)
+- [ArduSub Documentation](https://ardupilot.org/sub/)
+- [ROS 2 Jazzy Documentation](https://docs.ros.org/en/jazzy)
 - [MAVLink Specification](https://mavlink.io/en/)
-- [BlueOS Documentation](https://docs.bluerobotics.com/blueos/)
+- [BlueOS Documentation](https://blueos.cloud/docs/stable/development/overview/)
 - [OAK-D DepthAI Documentation](https://docs.luxonis.com/)
 - [ORB-SLAM3 Documentation](https://github.com/UZ-SLAMLab/ORB_SLAM3)
