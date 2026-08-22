@@ -64,7 +64,7 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 - [ ] **RT-01** Document competition tasks (gate, buoys, torpedoes, etc.) with success criteria and point values
 - [ ] **RT-02** Define vehicle operational envelope: max depth (5m), max speed (1.5 m/s), mission duration (15 min)
 - [ ] **RT-03** Create interface control document (ICD) between all compute nodes: UART baud rates, ROS 2 topics, MAVLink message types
-- [ ] **RT-04** Document failure modes and recovery actions for each system state (see ESS ENN Guide - Fault Detection)
+- [ ] **RT-04** Document failure modes and recovery actions for each system state 
 - [ ] **RT-05** **[DEFER]** Autonomy-specific requirements (waypoint accuracy, object detection thresholds) → defer until Phase 1
 - [ ] **RT-06** **[DEFER]** Detailed behavior tree design → defer until Phase 1, use simple state machine for ROV
 
