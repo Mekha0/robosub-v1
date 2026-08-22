@@ -1,0 +1,1 @@
+![Software Stack](diagrams/software-stack.svg)
