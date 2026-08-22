@@ -155,6 +155,38 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
+### 0.7.5 Hydrophone Hardware Integration (Weeks 5-6) **[FOCUS: Hardware]**
+
+**Goal:** Physically install and validate hydrophone array.
+
+- [ ] **HYD-HW-01** Mount 4-hydrophone array on vehicle frame (tetrahedral or planar configuration)
+- [ ] **HYD-HW-02** Route hydrophone analog signals to ADC/audio interface on Raspberry Pi or Jetson
+- [ ] **HYD-HW-03** Verify hydrophone signal capture: record ambient noise, pinger signals, and thruster noise
+- [ ] **HYD-HW-04** Calibrate hydrophone array: measure phase/amplitude response, characterize noise floor
+
+**Acceptance Criteria:**
+- [ ] All 4 hydrophones are securely mounted and waterproofed
+- [ ] Signals are captured cleanly with SNR > 20dB (in quiet pool conditions)
+- [ ] Calibration data is documented for all 4 channels
+
+---
+
+### 0.7.6 Hydrophone Signal Processing (Weeks 6-7) **[FOCUS: Perception]**
+
+**Goal:** Implement acoustic signal processing and TDOA localization.
+
+- [ ] **HYD-SP-01** Implement acoustic signal processing pipeline: bandpass filter (20-30kHz for typical pingers), envelope detection, time-of-arrival estimation
+- [ ] **HYD-SP-02** Implement Time Difference of Arrival (TDOA) localization: calculate bearing to acoustic source from hydrophone array geometry
+- [ ] **HYD-SP-03** Test TDOA localization on bench with a known acoustic source (e.g., smartphone speaker playing chirp)
+- [ ] **HYD-SP-04** Integrate TDOA bearing estimates into ROS 2 topic (`/acoustic/bearing`)
+
+**Acceptance Criteria:**
+- [ ] Signal processing pipeline runs at > 100Hz on Jetson
+- [ ] TDOA algorithm estimates bearing to acoustic source with < 10° error (bench test)
+- [ ] Bearing estimates are published to ROS 2 topic at > 10Hz
+
+---
+
 ### 0.8 Control Layer (Raspberry Pi - ROV Mode) **[FOCUS: Control / DevOps]**
 
 **Goal:** Set up the companion computer for MAVLink routing, I/O, and manual control.
@@ -348,6 +380,21 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 
 ---
 
+### 1.2.5 Acoustic Localization Integration **[FOCUS: Perception]**
+
+**Goal:** Fuse acoustic bearing with other sensors for improved state estimation.
+
+- [ ] **PER-11** Integrate hydrophone TDOA bearing estimates into sensor fusion EKF
+- [ ] **PER-12** Implement multi-sensor acoustic localization: fuse bearing from hydrophones with depth and IMU to produce 3D position estimate
+- [ ] **PER-13** Add acoustic source classification: distinguish between competition pingers, other vehicles, and ambient noise
+
+**Acceptance Criteria:**
+- [ ] Acoustic bearing estimates are fused into EKF with appropriate covariance
+- [ ] Multi-sensor localization improves position estimate during visual dropout (position error < 1.0m with acoustics vs. > 2.0m without)
+- [ ] Source classification distinguishes between at least 2 different pinger frequencies
+
+---
+
 ### 1.3 Autonomy Layer (Core)
 **Goal:** Implement mission planning, path planning, motion control, and dead reckoning.
 
@@ -369,6 +416,23 @@ This is a 24-week total plan at breakneck speed (and assumes 6 devs); it ends by
 - [ ] Dead Reckoning Fallback holds position within 0.5m for 10s during visual dropout (pool test)
 - [ ] Re-Acquisition Behavior recovers visual tracking within 30s of dropout
 - [ ] EKF covariance adapts correctly based on `vo_quality` (verified in simulation)
+
+---
+
+### 1.3.5 Acoustic Navigation Behaviors **[FOCUS: Autonomy]**
+
+**Goal:** Implement autonomy behaviors that use acoustic localization.
+
+- [ ] **AUTO-11** Add Acoustic Navigation state: use hydrophone bearing as primary navigation source when VO quality < 0.2
+- [ ] **AUTO-12** Implement acoustic homing behavior: generate velocity commands to move toward detected pinger
+- [ ] **AUTO-13** Add state transition: NAVIGATE → ACOUSTIC_HOMING when acoustic source detected and VO quality is low
+- [ ] **AUTO-14** Implement pinger tracking: use bearing changes over time to estimate pinger position
+
+**Acceptance Criteria:**
+- [ ] Acoustic Homing state navigates to pinger within 2m in pool test
+- [ ] State machine transitions correctly between NAVIGATE, ACOUSTIC_HOMING, and RECOVER
+- [ ] Acoustic navigation operates as fallback when visual odometry fails
+- [ ] Pinger tracking estimates pinger position with < 1m error (pool test)
 
 ---
 
